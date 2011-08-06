@@ -3,6 +3,7 @@ use Test::More tests => 1;
 use PDF::API2;
 
 my @possible_locations = (
+    '/usr/share/fonts/truetype/DejaVuSans.ttf',
     '/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf',
     '/var/lib/defoma/gs.d/dirs/fonts/DejaVuSans.ttf',
 );
