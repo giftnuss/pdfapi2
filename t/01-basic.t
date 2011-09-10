@@ -1,4 +1,4 @@
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 use warnings;
 use strict;
@@ -48,3 +48,9 @@ $pdf = PDF::API2->open('t/resources/sample.pdf');
 isa_ok($pdf,
        'PDF::API2',
        q{PDF::API2->open() returns a PDF::API2 object});
+
+eval {
+   my $null = PDF::API2->open('unknown/path/and/file.pdf');
+};
+like("$@",qr[^File 'unknown/path/and/file.pdf' does not exist\..*],
+   "throw error message when file not exists.");
