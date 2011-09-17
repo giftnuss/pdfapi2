@@ -1,4 +1,4 @@
-use Test::More tests => 52;
+use Test::More tests => 53;
 
 use warnings;
 use strict;
@@ -7,6 +7,13 @@ use PDF::API2;
 
 my $pdf = PDF::API2->new();
 my $page = $pdf->page();
+
+isa_ok($page,'PDF::API2::Page');
+
+# no, this seems is not worky
+# my $fresh = $page->new($pdf);
+# is_deeply($fresh,$page,"$page->new($pdf) works");
+# isnt($fresh,$page,"$page->new($pdf) creates new object");
 
 # Global Boxes
 
