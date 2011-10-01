@@ -26,12 +26,15 @@ my $origout = select($out);
 PDF::API2::Resource::Glyphs::_generate($glyphlist);
 select($origout);
 
-eval "package T::Glyphs;$generatedcode";
+eval "package T::Glyphs; $generatedcode";
 
 ok(!$@,"generated code is valid - $@");
 
-is_deeply(\%PDF::API2::Resource::Glyphs::u2n,\%T::Glyphs::u2n,
+{ no warnings 'once';
+  is_deeply(\%PDF::API2::Resource::Glyphs::u2n,\%T::Glyphs::u2n,
     "\%u2n hash is in sync with glyphlist");
 
-is_deeply(\%PDF::API2::Resource::Glyphs::n2u,\%T::Glyphs::n2u,
+  is_deeply(\%PDF::API2::Resource::Glyphs::n2u,\%T::Glyphs::n2u,
     "\%n2u hash is in sync with glyphlist");
+};
+
