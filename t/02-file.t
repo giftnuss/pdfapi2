@@ -1,4 +1,4 @@
-use Test::More tests => 8;
+use Test::More tests => 5;
 # Abstract: tests for one of the main classes here PDF::API2::Basic::PDF::File
 
 use warnings;
